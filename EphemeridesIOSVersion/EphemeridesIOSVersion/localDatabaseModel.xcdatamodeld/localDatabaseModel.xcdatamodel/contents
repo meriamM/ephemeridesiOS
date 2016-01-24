@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Ephemerides" representedClassName="Ephemerides" syncable="YES">
+        <attribute name="annee" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iden" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="jour" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="liens" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mois" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="priorite" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="titre" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lethemedelephemeride" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Themes" inverseName="ephemeridesdutheme" inverseEntity="Themes" syncable="YES"/>
+        <relationship name="letypedelephemeride" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Types" inverseName="ephemeridesdutype" inverseEntity="Types" syncable="YES"/>
+        <relationship name="motsclesdelephemeride" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Motscles" inverseName="ephemeridesdumotcle" inverseEntity="Motscles" syncable="YES"/>
+    </entity>
+    <entity name="Motscles" representedClassName="Motscles" syncable="YES">
+        <attribute name="iden" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ephemeridesdumotcle" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ephemerides" inverseName="motsclesdelephemeride" inverseEntity="Ephemerides" syncable="YES"/>
+    </entity>
+    <entity name="SousThemes" representedClassName="SousThemes" syncable="YES">
+        <attribute name="iden" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="themeparent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Themes" inverseName="sousthemesrelatifs" inverseEntity="Themes" syncable="YES"/>
+    </entity>
+    <entity name="Themes" representedClassName="Themes" syncable="YES">
+        <attribute name="iden" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ephemeridesdutheme" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ephemerides" inverseName="lethemedelephemeride" inverseEntity="Ephemerides" syncable="YES"/>
+        <relationship name="sousthemesrelatifs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SousThemes" inverseName="themeparent" inverseEntity="SousThemes" syncable="YES"/>
+    </entity>
+    <entity name="Types" representedClassName="Types" syncable="YES">
+        <attribute name="iden" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ephemeridesdutype" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ephemerides" inverseName="letypedelephemeride" inverseEntity="Ephemerides" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Ephemerides" positionX="-315" positionY="-30522" width="128" height="210"/>
+        <element name="Motscles" positionX="-47" positionY="-30537" width="128" height="90"/>
+        <element name="SousThemes" positionX="-648" positionY="-30294" width="128" height="90"/>
+        <element name="Themes" positionX="-596" positionY="-30546" width="128" height="105"/>
+        <element name="Types" positionX="-18" positionY="-30276" width="128" height="90"/>
+    </elements>
+</model>
